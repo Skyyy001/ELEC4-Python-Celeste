@@ -30,13 +30,82 @@ def determine_status(grades):
     else:
         return "FAILED"
 
+# Accept and validate student grades.
+def enter_grades():
+    grades = []
 
-# Test the computing functions.
-if __name__ == "__main__":
-    sample_grades = [90, 85, 88, 92, 95]
+    while True:
+        try:
+            count = int(input("Enter number of grades: "))
 
+            if count > 0:
+                break
+
+            print("Enter at least one grade.")
+
+        except ValueError:
+            print("Please enter a whole number.")
+
+    for i in range(count):
+        while True:
+            try:
+                grade = float(input(f"Enter grade {i + 1}: "))
+
+                if 0 <= grade <= 100:
+                    grades.append(grade)
+                    break
+
+                print("Grade must be from 0 to 100.")
+
+            except ValueError:
+                print("Please enter a valid number.")
+
+    return grades
+
+   # Display the computed grade results.
+def display_results(grades):
+    if not grades:
+        print("No grades entered yet.")
+        return
+
+    print("\n===== GRADE RESULTS =====")
+    print(f"Average: {calculate_average(grades):.2f}")
+    print(f"Highest: {get_highest_grade(grades):.2f}")
+    print(f"Lowest: {get_lowest_grade(grades):.2f}")
+    print(f"Status: {determine_status(grades)}")
+
+# Main menu of the program.
+def main():
+    grades = []
+
+    print("==============================")
+    print("   STUDENT GRADE CALCULATOR")
+    print("==============================")
     print("Student: Antonio Caracas Celeste")
-    print("Average:", calculate_average(sample_grades))
-    print("Highest:", get_highest_grade(sample_grades))
-    print("Lowest:", get_lowest_grade(sample_grades))
-    print("Status:", determine_status(sample_grades))
+    print("Section: IV-BSIT-A")
+
+    while True:
+        print("\n===== MAIN MENU =====")
+        print("[1] Enter Grades")
+        print("[2] View Results")
+        print("[3] Exit")
+
+        choice = input("Enter your choice: ")
+
+        if choice == "1":
+            grades = enter_grades()
+            print("Grades saved successfully!")
+
+        elif choice == "2":
+            display_results(grades)
+
+        elif choice == "3":
+            print("Thank you for using the program!")
+            break
+
+        else:
+            print("Invalid choice. Please try again.")
+
+
+if __name__ == "__main__":
+    main()

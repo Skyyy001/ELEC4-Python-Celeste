@@ -1,0 +1,6 @@
+Safe Menu Program - Sample File
+Student: Antonio Caracas Celeste
+Section: IV-BSIT-A
+
+This file is used to test successful file reading
+and exception handling in Python.

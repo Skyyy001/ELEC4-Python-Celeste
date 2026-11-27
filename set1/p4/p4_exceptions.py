@@ -24,6 +24,32 @@ def divide_numbers():
     finally:
         print("Division operation finished.")
 
+# Open a text file and handle possible errors.
+def open_file():
+    filename = input("Enter file name: ").strip()
+
+    try:
+        with open(filename, "r", encoding="utf-8") as file:
+            contents = file.read()
+
+    except FileNotFoundError:
+        print("Error: File not found.")
+
+    except PermissionError:
+        print("Error: Permission denied.")
+
+    except UnicodeError:
+        print("Error: Unable to read the text file.")
+
+    except (OSError, ValueError):
+        print("Error: Unable to open the file.")
+
+    else:
+        print("\n===== FILE CONTENTS =====")
+        print(contents)
+
+    finally:
+        print("File operation finished.")
 
 # Main menu of the program.
 def main():
@@ -32,7 +58,8 @@ def main():
         print("Student: Antonio Caracas Celeste")
         print("Section: IV-BSIT-A")
         print("[1] Divide Numbers")
-        print("[2] Exit")
+        print("[2] Open File")
+        print("[3] Exit")
 
         choice = input("Enter your choice: ")
 
@@ -40,6 +67,9 @@ def main():
             divide_numbers()
 
         elif choice == "2":
+            open_file()
+
+        elif choice == "3":
             print("Thank you for using the program!")
             break
 
@@ -49,3 +79,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    

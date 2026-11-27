@@ -124,3 +124,8 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# A list is an ordered collection that allows duplicate values.
+# A set is a collection that stores unique values without a guaranteed order.
+# In this program, I used a list to store and display student names.
+# I used a set to prevent duplicate names regardless of capitalization.

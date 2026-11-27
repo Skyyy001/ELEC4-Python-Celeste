@@ -109,3 +109,9 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# Local and Global Variables
+# A local variable is created inside a function and can only be accessed within that function.
+# A global variable is defined outside functions and can be accessed by different functions.
+# In this program, PASSING_GRADE is a global constant used to determine the student's passing status.
+# The average variable inside determine_status() is an example of a local variable.
